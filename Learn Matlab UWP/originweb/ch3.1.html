@@ -1,0 +1,175 @@
+﻿<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn MATLAB CN</title>
+    <link rel="stylesheet" type="text/css" href="../css/default.css">
+    <!--<link rel="stylesheet" href="http://fonts.useso.com/css?family=Roboto:300,700">-->
+    <link rel="stylesheet" href="../css/style.min.css">
+    <!--[if IE]>
+        <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+	<style type="text/css">
+	table.tableizer-table {
+		font-size: 12px;
+		border: 1px solid #CCC; 
+		font-family: Arial, Helvetica, sans-serif;
+	} 
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+	}
+	.tableizer-table th {
+		background-color: #104E8B; 
+		color: #FFF;
+		font-weight: bold;
+	}
+</style>
+</head>
+<body>
+    <div id="wrapper" class="wrapper">
+        <!--<header class="header htmleaf-header">
+            <!--<h1>学习MATLAB基础编程 <span>献给正在学习matlab的同志们</span></h1>
+            <div class="htmleaf-links">
+                <a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.heguangyu.net" title="个人网站" ><span>个人网站</span></a>
+                <a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://matlab.heguangyu.net/ch3/ch3.1.html" title="网页版" ><span>网页版</span></a>
+            </div>
+        </header>-->
+        <main>
+            <div class="container">
+                <section>
+                    <h1>3.1	数组、结构和创建</h1>
+                    <div id="github-icons"></div>
+					<h2>3.1.1 数组及其结构</h2>
+                    <p>1	数组的维度</p>
+					<p>2	数组的规模及相关术语</p>
+					
+					<p>3	获取数组结构参数的M指令</p>
+					
+					<h2>3.1.2	 行（列）数组的创建</h2>
+					<p>1	递增/减型行（列）数组的创建</p>
+					
+					<p>2	其他类型行（列）数组的创建</p>
+					
+					<h2>3.1.3	二维通用数组的创建</h2>
+					<p>1	小规模数组的直接输入法</p>
+					
+					<p>2	中规模数组的数组编辑器创建法</p>
+					
+					<p>3	中规模的M文件创建法</p>
+					
+					<p>4	利用MATLAB函数创建数组<br>
+					<table class="tableizer-table">
+					<thead><tr class="tableizer-firstrow"><th>指  令</th><th>含        义</th><th>指  令</th><th>含        义</th></tr></thead><tbody>
+					<tr><td>diag</td><td>产生对角数组（2）</td><td>ones</td><td>产生全1数组</td></tr>
+					<tr><td>eye</td><td>产生单位数组（2）</td><td>zeros</td><td>产生全0数组</td></tr>
+					<tr><td>magic</td><td>产生魔方数组（2）</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+					<tr><td>rand</td><td>产生均匀分布随机数组</td><td>random</td><td>生成各种分布随机数组</td></tr>
+					<tr><td>randn</td><td>产生正态分布随机数组</td><td>randsrc</td><td>在指定字符集上生成均匀分布随机数组</td></tr>
+					<tr><td>gallery</td><td>产生各种用途的测试数组/矩阵（ch4）</td></tr>
+					</tbody></table><br>
+					<B>例子</B><br>
+					<font color="#00A600">ones(2,4)</font><br>
+					<font color="#0000E3">ans =</font><br>
+					<font color="#0000E3">&nbsp;&nbsp;1     1     1     1</font><br>
+					<font color="#0000E3">&nbsp;&nbsp;1     1     1     1</font><br>
+					<br>
+					<font color="#00A600">rng(0)</font><br>
+					<font color="#00A600">randn(2,3)</font><br>
+					<font color="#0000E3">ans =</font><br>
+					<font color="#0000E3">&nbsp;&nbsp;0.5377   -2.2588    0.3188</font><br>
+					<font color="#0000E3">&nbsp;&nbsp;1.8339    0.8622   -1.3077</font><br>
+					<br>
+					
+					</p>
+					
+					<h2>3.1.4	数组构作技法综合</h2>
+					<p>数组操作函数
+					<table class="tableizer-table">
+					<thead><tr class="tableizer-firstrow"><th>指  令</th><th>含        义</th></tr></thead><tbody>
+					<tr><td>diag</td><td>提取对角元素，或生成对角阵</td></tr>
+					<tr><td>repmat</td><td>按指定的"行数、列数"铺放模块数组，以形成更大的数组</td></tr>
+					<tr><td>reshape</td><td>在总元素数不变的前提下，改变数组的"行数、列数"</td></tr>
+					<tr><td>flipud</td><td>以数组"水平中线"为对称轴，交换上下对称位置上的数组</td></tr>
+					<tr><td>fliplr</td><td>以数组"垂直中线"为对称轴，交换左右对称位置上的数组</td></tr>
+					<tr><td>rot90</td><td>把数组逆时针旋转90°</td></tr>
+					</tbody></table><br>
+					<B>例子</B><br>
+					
+					
+                </section>
+            </div>
+        </main>
+    </div><!-- /wrapper -->
+
+    <button id="mm-menu-toggle" class="mm-menu-toggle">Toggle Menu</button>
+    <nav id="mm-menu" class="mm-menu">
+        <div class="mm-menu__header">
+            <h2 class="mm-menu__title">作者：何广宇</h2>
+        </div>
+        <ul class="mm-menu__items">
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="../index.html">
+                    <span class="mm-menu__link-text"><i class="md md-home"></i> 首页</span>
+                </a>
+            </li>
+
+
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="ch3.html">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 返回第三章</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第二节</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第三节</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第四节</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第五节</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第六节</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第七节</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第八节</span>
+                </a>
+            </li>
+            <li class="mm-menu__item">
+                <a class="mm-menu__link" href="#">
+                    <span class="mm-menu__link-text"><i class="md md-person"></i> 关于</span>
+					<p>内容号：16.05.18.1</p>
+                </a>
+            </li>
+        </ul>
+    </nav><!-- /nav -->
+
+    <script src="../js/production/materialMenu.min.js"></script>
+    <script>
+	  var menu = new Menu;
+    </script>
+</body>
+</html>
