@@ -30,52 +30,63 @@ namespace Learn_Matlab_UWP
             this.InitializeComponent();
         }
         StorageFolder localFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+        StorageFolder appFolder = ApplicationData.Current.LocalFolder;
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+
+
+
+        private async void toggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
-           
-            Windows.Storage.Pickers.FileOpenPicker openPicker = new Windows.Storage.Pickers.FileOpenPicker();
-            openPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            openPicker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
 
             StorageFolder webFolder = await localFolder.GetFolderAsync("web");
-            // Filter to include a sample subset of file types.
-            openPicker.FileTypeFilter.Clear();
-            openPicker.FileTypeFilter.Add(".html");
-            //openPicker.FileTypeFilter.Add(".png");
-            //openPicker.FileTypeFilter.Add(".jpeg");
-            //openPicker.FileTypeFilter.Add(".jpg");
+            IStorageFile namesave = await appFolder.CreateFileAsync("namesave", CreationCollisionOption.OpenIfExists);
 
-            // Open the file picker.
-            StorageFile updatefile = await openPicker.PickSingleFileAsync();
-            string updatename = updatefile.Name;
-            // file is null if user cancels the file picker.
-            if (updatefile != null)
+
+
+            if (importSwitch.IsOn == true)
             {
-                // Open a stream for the selected file.
-                Windows.Storage.Streams.IRandomAccessStream fileStream = await updatefile.OpenAsync(FileAccessMode.Read);
-                await updatefile.CopyAsync(webFolder, updatename, NameCollisionOption.ReplaceExisting);
-                text.Text = "已更新";
-                Uri ch1Uri = new Uri("ms-appx-web:///web/index.html");
-                updateweb.Source = ch1Uri;
+                Windows.Storage.Pickers.FileOpenPicker openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+                //openPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+                //openPicker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+
+                openPicker.FileTypeFilter.Clear();
+                openPicker.FileTypeFilter.Add(".html");
+                StorageFile updatefile = await openPicker.PickSingleFileAsync();
+                
+                if (updatefile != null)
+                {
+                    string updatename = updatefile.Name;
+                    Windows.Storage.Streams.IRandomAccessStream fileStream = await updatefile.OpenAsync(FileAccessMode.Read);
+                    await updatefile.CopyAsync(webFolder, updatename, NameCollisionOption.ReplaceExisting);
+
+                    //var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
+    //updatename , Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
+                    //await Windows.Storage.FileIO.WriteBufferAsync(namesave , buffer);
+
+                    await FileIO.WriteTextAsync(namesave, updatename,0);
+                    
+                    text.Text = "已更新:" + updatename;
+                    Uri Uri = new Uri("ms-appx-web:///web/"+updatename);
+                    updateweb.Source = Uri;
+                }
+                else
+                {
+                    string updatename = "index.html";
+                    await FileIO.WriteTextAsync(namesave, updatename, 0);
+                }
             }
-
-
-
-        }
-
-        private async void button1_Click(object sender, RoutedEventArgs e)
-        {
-
-
-            await localFolder.CreateFolderAsync("web", CreationCollisionOption.GenerateUniqueName);
-            StorageFolder webFolder = await localFolder.GetFolderAsync("web");
-            StorageFile restorefile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///originweb/index.html"));
-            string restorename = restorefile.Name;
-            await restorefile.CopyAsync(webFolder, restorename, NameCollisionOption.ReplaceExisting);
-            Uri ch1Uri = new Uri("ms-appx-web:///web/index.html");
-            updateweb.Source = ch1Uri;
-
+            else
+            {
+                IStorageFile name = await appFolder.GetFileAsync("namesave");
+                string updatename = await FileIO.ReadTextAsync(name);
+                //await localFolder.CreateFolderAsync("web", CreationCollisionOption.GenerateUniqueName);
+                StorageFile restorefile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///originweb/"+updatename));
+                //string restorename = restorefile.Name;
+                await restorefile.CopyAsync(webFolder, updatename, NameCollisionOption.ReplaceExisting);
+                Uri Uri = new Uri("ms-appx-web:///web/"+updatename);
+                updateweb.Source = Uri;
+                await namesave.DeleteAsync();
+            }
         }
     }
 }
