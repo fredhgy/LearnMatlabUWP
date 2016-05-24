@@ -13,18 +13,29 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
-
 namespace Learn_Matlab_UWP
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
-    public sealed partial class Ch3View : Page
+	public sealed partial class Ch3View : Page
     {
-        public Ch3View()
+		public Ch3View()
         {
             this.InitializeComponent();
         }
-    }
+		Uri ch3Uri = new Uri("ms-appx-web:///web/ch3.html");
+        //Uri myUri = new Uri(baseUri, "catalog/shownew.htm");
+        ch3web.Source = ch3Uri;
+        private void toggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (toggleSwitch.IsOn == true)
+            {
+                Uri ch3Uri = new Uri("http://matlab.heguangyu.net");
+                ch3web.Source = ch3Uri;
+            }
+            else
+            {
+                Uri ch3Uri = new Uri("ms-appx-web:///web/ch3.html");
+                ch3web.Source = ch3Uri;
+            }
+        }    
+	}
 }
