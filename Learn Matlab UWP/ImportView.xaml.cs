@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
@@ -8,6 +9,7 @@ using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -32,7 +34,7 @@ namespace Learn_Matlab_UWP
         StorageFolder localFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
         StorageFolder appFolder = ApplicationData.Current.LocalFolder;
 
-
+        
 
 
         private async void toggleSwitch_Toggled(object sender, RoutedEventArgs e)
@@ -41,7 +43,7 @@ namespace Learn_Matlab_UWP
             StorageFolder webFolder = await localFolder.GetFolderAsync("web");
             IStorageFile namesave = await appFolder.CreateFileAsync("namesave", CreationCollisionOption.OpenIfExists);
 
-
+            
 
             if (importSwitch.IsOn == true)
             {
@@ -52,7 +54,7 @@ namespace Learn_Matlab_UWP
                 openPicker.FileTypeFilter.Clear();
                 openPicker.FileTypeFilter.Add(".html");
                 StorageFile updatefile = await openPicker.PickSingleFileAsync();
-                
+
                 if (updatefile != null)
                 {
                     string updatename = updatefile.Name;
@@ -60,13 +62,13 @@ namespace Learn_Matlab_UWP
                     await updatefile.CopyAsync(webFolder, updatename, NameCollisionOption.ReplaceExisting);
 
                     //var buffer = Windows.Security.Cryptography.CryptographicBuffer.ConvertStringToBinary(
-    //updatename , Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
+                    //updatename , Windows.Security.Cryptography.BinaryStringEncoding.Utf8);
                     //await Windows.Storage.FileIO.WriteBufferAsync(namesave , buffer);
 
-                    await FileIO.WriteTextAsync(namesave, updatename,0);
-                    
+                    await FileIO.WriteTextAsync(namesave, updatename, 0);
+
                     text.Text = "已更新:" + updatename;
-                    Uri Uri = new Uri("ms-appx-web:///web/"+updatename);
+                    Uri Uri = new Uri("ms-appx-web:///web/" + updatename);
                     updateweb.Source = Uri;
                 }
                 else
@@ -80,13 +82,50 @@ namespace Learn_Matlab_UWP
                 IStorageFile name = await appFolder.GetFileAsync("namesave");
                 string updatename = await FileIO.ReadTextAsync(name);
                 //await localFolder.CreateFolderAsync("web", CreationCollisionOption.GenerateUniqueName);
-                StorageFile restorefile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///originweb/"+updatename));
+                StorageFile restorefile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///originweb/" + updatename));
                 //string restorename = restorefile.Name;
                 await restorefile.CopyAsync(webFolder, updatename, NameCollisionOption.ReplaceExisting);
-                Uri Uri = new Uri("ms-appx-web:///web/"+updatename);
+                Uri Uri = new Uri("ms-appx-web:///web/" + updatename);
                 updateweb.Source = Uri;
                 await namesave.DeleteAsync();
                 text.Text = "已还原:" + updatename;
+            }
+        }
+
+        private async void button_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri("http://matlab.heguangyu.net/matlab.html", UriKind.RelativeOrAbsolute));
+
+
+
+        }
+
+        private async void button1_Click(object sender, RoutedEventArgs e)
+        {
+            //await appFolder.CreateFolderAsync("extractFolder",CreationCollisionOption.OpenIfExists);
+            //StorageFolder extractFolder = await appFolder.GetFolderAsync("extractFolder");
+            StorageFolder webFolder = await localFolder.GetFolderAsync("web");
+
+            Windows.Storage.Pickers.FileOpenPicker openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+            //openPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            //openPicker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+
+            openPicker.FileTypeFilter.Clear();
+            openPicker.FileTypeFilter.Add(".zip");
+            StorageFile zipfile = await openPicker.PickSingleFileAsync();
+
+            if (zipfile != null)
+            {
+                string zipname = zipfile.Name;
+                Windows.Storage.Streams.IRandomAccessStream fileStream = await zipfile.OpenAsync(FileAccessMode.Read);
+                await zipfile.CopyAsync(localFolder, zipname, NameCollisionOption.ReplaceExisting);
+
+                //string startPath = @"ms-appdata:///local/start";
+                //string zipPath = "ms-appdata:///local/matlab_update.zip";
+                //await webFolder.DeleteAsync();
+                //await appFolder.CreateFolderAsync("zip",CreationCollisionOption.OpenIfExists);
+                ZipFile.ExtractToDirectory(zipname, @"C:\Downloads\matlab");
+                
             }
         }
     }

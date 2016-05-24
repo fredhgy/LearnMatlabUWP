@@ -13,7 +13,9 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="text" Text="学习Maltab：更新内容" Style="{ThemeResource TitleTextBlockStyle}"  Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
-        <WebView x:Name="updateweb" Margin="0,45,0,5"  Height="590" Grid.ColumnSpan="2"/>
+        <WebView x:Name="updateweb" Source="ms-appdata:///local/matlab_update/index.html" Margin="0,45,0,5"  Height="590" Grid.ColumnSpan="2"/>
         <ToggleSwitch x:Name="importSwitch" Header="" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top" Toggled="toggleSwitch_Toggled" Height="40" Width="20" OffContent="更新" OnContent="还原"/>
+        <Button x:Name="button" Content="下载更新包" HorizontalAlignment="Stretch" Height="40" Margin="0,0,190,0" VerticalAlignment="Bottom" Click="button_Click"/>
+        <Button x:Name="button1" Content="导入安装包（未完成）" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="185" Height="40" Click="button1_Click"/>
     </Grid>
 </Page>

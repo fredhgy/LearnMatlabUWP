@@ -97,10 +97,16 @@
     <Content Include="originweb\ch1.5.html" />
     <Content Include="originweb\ch1.6.html" />
     <Content Include="originweb\ch1.7.html" />
+    <Content Include="originweb\ch1.8.html" />
     <Content Include="originweb\ch1.html" />
     <Content Include="originweb\ch2.html" />
     <Content Include="originweb\ch3.1.html" />
     <Content Include="originweb\ch3.html" />
+    <Content Include="originweb\ch4.html" />
+    <Content Include="originweb\ch5.html" />
+    <Content Include="originweb\ch6.html" />
+    <Content Include="originweb\ch7.html" />
+    <Content Include="originweb\ch8.html" />
     <Content Include="originweb\index.html" />
     <Content Include="web\about.html" />
     <Content Include="ApplicationInsights.config">
@@ -130,6 +136,21 @@
     </Compile>
     <Compile Include="Ch3View.xaml.cs">
       <DependentUpon>Ch3View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ch4View.xaml.cs">
+      <DependentUpon>Ch4View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ch5View.xaml.cs">
+      <DependentUpon>Ch5View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ch6View.xaml.cs">
+      <DependentUpon>Ch6View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ch7View.xaml.cs">
+      <DependentUpon>Ch7View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ch8View.xaml.cs">
+      <DependentUpon>Ch8View.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
@@ -161,6 +182,7 @@
     <Content Include="web\ch1.5.html" />
     <Content Include="web\ch1.6.html" />
     <Content Include="web\ch1.7.html" />
+    <Content Include="web\ch1.8.html" />
     <Content Include="web\ch1.html" />
     <Content Include="web\ch2.html" />
     <Content Include="web\ch3.1.html" />
@@ -169,6 +191,11 @@
     <Content Include="css\style.css" />
     <Content Include="css\style.min.css" />
     <Content Include="fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="web\ch4.html" />
+    <Content Include="web\ch5.html" />
+    <Content Include="web\ch6.html" />
+    <Content Include="web\ch7.html" />
+    <Content Include="web\ch8.html" />
     <Content Include="web\index.html" />
     <Content Include="js\development\materialMenu.js" />
     <Content Include="js\main.js" />
@@ -201,6 +228,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ch3View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ch4View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ch5View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ch6View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ch7View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ch8View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
