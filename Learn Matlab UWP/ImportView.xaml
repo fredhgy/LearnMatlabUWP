@@ -12,7 +12,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="text" Text="学习Maltab编程：更新内容"  Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+        <TextBlock x:Name="text" Text="学习Maltab编程：更新内容" Style="{ThemeResource TitleTextBlockStyle}"  Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
         <WebView x:Name="updateweb" Margin="0,45,0,5"  Height="590" Grid.ColumnSpan="2"/>
         <ToggleSwitch x:Name="importSwitch" Header="" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top" Toggled="toggleSwitch_Toggled" Height="40" Width="20" OffContent="更新" OnContent="还原"/>
     </Grid>

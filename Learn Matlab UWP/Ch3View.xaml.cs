@@ -21,14 +21,11 @@ namespace Learn_Matlab_UWP
         {
             this.InitializeComponent();
         }
-		Uri ch3Uri = new Uri("ms-appx-web:///web/ch3.html");
-        //Uri myUri = new Uri(baseUri, "catalog/shownew.htm");
-        ch3web.Source = ch3Uri;
-        private void toggleSwitch_Toggled(object sender, RoutedEventArgs e)
+		private void toggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             if (toggleSwitch.IsOn == true)
             {
-                Uri ch3Uri = new Uri("http://matlab.heguangyu.net");
+                Uri ch3Uri = new Uri("http://matlab.heguangyu.net/ch3/ch3.html");
                 ch3web.Source = ch3Uri;
             }
             else

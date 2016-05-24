@@ -8,8 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="#FFF2F2F2">
-        <TextBlock Text="学习matlab编程：关于" Style="{ThemeResource TitleTextBlockStyle}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <WebView x:Name="ch2web" Margin="0,40,0,0" Height="590"/>
+        <TextBlock Text="学习Matlab：第二章" Style="{ThemeResource TitleTextBlockStyle}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <WebView x:Name="ch2web" Source="ms-appx-web:///web/ch2.html" Margin="0,40,0,0" Height="590"/>
         <ToggleSwitch x:Name="toggleSwitch" Header="" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top" Toggled="toggleSwitch_Toggled" Height="40" Width="20" OffContent="网页版"/>
     </Grid>
 </Page>

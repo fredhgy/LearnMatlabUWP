@@ -86,6 +86,7 @@ namespace Learn_Matlab_UWP
                 Uri Uri = new Uri("ms-appx-web:///web/"+updatename);
                 updateweb.Source = Uri;
                 await namesave.DeleteAsync();
+                text.Text = "已还原:" + updatename;
             }
         }
     }

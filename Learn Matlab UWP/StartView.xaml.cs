@@ -21,10 +21,7 @@ namespace Learn_Matlab_UWP
         {
             this.InitializeComponent();
         }
-		Uri indexUri = new Uri("ms-appx-web:///web/index.html");
-        //Uri myUri = new Uri(baseUri, "catalog/shownew.htm");
-        indexweb.Source = indexUri;
-        private void toggleSwitch_Toggled(object sender, RoutedEventArgs e)
+		private void toggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             if (toggleSwitch.IsOn == true)
             {
