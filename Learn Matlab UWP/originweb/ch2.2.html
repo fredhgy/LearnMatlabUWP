@@ -4,22 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn MATLAB CN</title>
     <link rel="stylesheet" type="text/css" href="../css/default.css">
     <link rel="stylesheet" href="../css/style.min.css">
     
 </head>
 <body>
     <div id="wrapper" class="wrapper">
+       
         <main>
             <div class="container">
                 <section>
-                    <h1>第二章 符号计算</h1>
+                    <h1>第2节 符号数字及表达式的操作</h1>
                     <div id="github-icons"></div>
-                    <p>解算数学表达式、方程不是在离散化的数值点上进行，而是凭借一系列恒等式，数学定理，通过推理和演绎，力求获得解析结果。<br>
-					这种计算建立在数值完全准确表达和推演严格解析的基础之上，因此所得结果是完全准确的。<br>
-					与数值计算的最重要区别：数值计算一定存在截断误差，而且在计算过程中不断传播，产生累计误差；符号计算是在完全准确的情况下进行的，不产生累积误差，代价是降低计算速度和增加内存需求。
+					<h2>符号数字和符号常数</h2>
+					<p> sym(Num)	<br>			
+sc=sym(Num)	  [推荐使用！]		<br>
+ 
+sym('Num')				<br>
+sc=sym('Num')
 </p>
-                </section>
+					<h2>基本符号变量</h2>
+					<p>para=sym(‘para’)                    %默认复数域符号变量 <br>
+ para=sym(‘para’,’Flag’)         % Flag=real, positive	<br>
+syms  para  <br>
+syms para Flag <br>
+syms  para1  para2 paraN       %定义多个符号变量，只能用“空格”分隔 <br>
+syms  para1 para2 paraN  Flag <br>
+ </p>
+ 
+					<h2>符号表达式和符号函数</h2>
+					<p>符号表达式是由基本符号对象（数字、常数、变量）、运算符、MATLAB函数命令等基本要素编写的M码。
+符号函数是为表达变量间抽象约束关系编写的M码，需指明变量名。
+</p>
+					
+					
+					<h2>自由符号变量(x, y)和符号参数(a, b)</h2>
+					<p>symvar(expression) <br>
+symvar(expression, n)
+</p>
+					
+					<h2>符号对象的识别 </h2>
+					<p>注意：有的函数命令适用于多种数据对象（如数值、符号等），但也有的函数命令只对某种数据对象适用。<br>
+在数值计算和符号计算混合使用的情况下，由于函数指令与数据对象不适配引起的错误容易发生。为了避免这种错误，MATLAB提供了用于识别数据对象属性的指令：<br>
+ 
+class(var)	     给出变量var的数据类别（如double, sym等）<br>
+isa(var,'Obj')   若变量var是Obj代表的类别，给出1，表示“真”<br>
+whos		      给出所有MATLAB内存变量的属性<br>
+
+</p>
+					
+					
+				</section>
             </div>
         </main>
     </div><!-- /wrapper -->
@@ -32,12 +68,12 @@
         <ul class="mm-menu__items">
             <li class="mm-menu__item">
                 <a class="mm-menu__link" href="ch2.1.html">
-                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第一节</span>
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第一节 </span>
                 </a>
             </li>
             <li class="mm-menu__item">
-                <a class="mm-menu__link" href="ch2.2.html">
-                    <span class="mm-menu__link-text"><i class="md md-details"></i> 第二节</span>
+                <a class="mm-menu__link" href="ch2.html">
+                    <span class="mm-menu__link-text"><i class="md md-details"></i> 返回第二章</span>
                 </a>
             </li>
             <li class="mm-menu__item">

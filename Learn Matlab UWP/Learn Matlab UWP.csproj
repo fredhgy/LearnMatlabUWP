@@ -99,6 +99,8 @@
     <Content Include="originweb\ch1.7.html" />
     <Content Include="originweb\ch1.8.html" />
     <Content Include="originweb\ch1.html" />
+    <Content Include="originweb\ch2.1.html" />
+    <Content Include="originweb\ch2.2.html" />
     <Content Include="originweb\ch2.html" />
     <Content Include="originweb\ch3.1.html" />
     <Content Include="originweb\ch3.html" />
@@ -184,6 +186,8 @@
     <Content Include="web\ch1.7.html" />
     <Content Include="web\ch1.8.html" />
     <Content Include="web\ch1.html" />
+    <Content Include="web\ch2.1.html" />
+    <Content Include="web\ch2.2.html" />
     <Content Include="web\ch2.html" />
     <Content Include="web\ch3.1.html" />
     <Content Include="web\ch3.html" />
