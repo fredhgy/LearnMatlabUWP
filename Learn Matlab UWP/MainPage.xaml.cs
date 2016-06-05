@@ -30,5 +30,9 @@ namespace Learn_Matlab_UWP
             NavigationSplitView.IsPaneOpen = !NavigationSplitView.IsPaneOpen;
         }
 
+        private void textBlock_SelectionChanged(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }

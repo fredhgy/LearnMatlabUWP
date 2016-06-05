@@ -18,7 +18,7 @@ namespace Learn_Matlab_UWP.Models
             MenuItems.Add(new MenuItem("\uE1CE", "第七章", typeof(Ch7View)));
             MenuItems.Add(new MenuItem("\uE1CE", "第八章", typeof(Ch8View)));
             MenuItems.Add(new MenuItem("\uE1CE", "关于", typeof(AboutView)));
-            MenuItems.Add(new MenuItem("\uE1CE", "版本号：1.1606.0301", typeof(ImportView)));
+            MenuItems.Add(new MenuItem("\uE1CE", "版本号：1.1606.0501", typeof(ImportView)));
         }
     }
 }
